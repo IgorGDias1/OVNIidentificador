@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.grbDados = new System.Windows.Forms.GroupBox();
+            this.lblPlaneta = new System.Windows.Forms.Label();
             this.lblTripulantes = new System.Windows.Forms.Label();
             this.lblAbduzidos = new System.Windows.Forms.Label();
             this.lblSituacao = new System.Windows.Forms.Label();
@@ -39,7 +40,6 @@
             this.btnAbduzir = new System.Windows.Forms.Button();
             this.btnDesabduzir = new System.Windows.Forms.Button();
             this.btnRetornarOrigem = new System.Windows.Forms.Button();
-            this.lblPlaneta = new System.Windows.Forms.Label();
             this.cmbPlanetas = new System.Windows.Forms.ComboBox();
             this.btnMudar = new System.Windows.Forms.Button();
             this.grbDados.SuspendLayout();
@@ -59,6 +59,15 @@
             this.grbDados.TabStop = false;
             this.grbDados.Text = "Dados:";
             // 
+            // lblPlaneta
+            // 
+            this.lblPlaneta.AutoSize = true;
+            this.lblPlaneta.Location = new System.Drawing.Point(11, 157);
+            this.lblPlaneta.Name = "lblPlaneta";
+            this.lblPlaneta.Size = new System.Drawing.Size(71, 21);
+            this.lblPlaneta.TabIndex = 3;
+            this.lblPlaneta.Text = "Planeta:";
+            // 
             // lblTripulantes
             // 
             this.lblTripulantes.AutoSize = true;
@@ -67,7 +76,6 @@
             this.lblTripulantes.Size = new System.Drawing.Size(98, 21);
             this.lblTripulantes.TabIndex = 2;
             this.lblTripulantes.Text = "Tripulantes:";
-            this.lblTripulantes.Click += new System.EventHandler(this.lblTripulantes_Click);
             // 
             // lblAbduzidos
             // 
@@ -129,6 +137,7 @@
             this.btnRemoverTripulante.TabIndex = 4;
             this.btnRemoverTripulante.Text = "Remover Tripulante";
             this.btnRemoverTripulante.UseVisualStyleBackColor = true;
+            this.btnRemoverTripulante.Click += new System.EventHandler(this.btnRemoverTripulante_Click);
             // 
             // btnAbduzir
             // 
@@ -139,6 +148,7 @@
             this.btnAbduzir.TabIndex = 5;
             this.btnAbduzir.Text = "Abduzir";
             this.btnAbduzir.UseVisualStyleBackColor = true;
+            this.btnAbduzir.Click += new System.EventHandler(this.btnAbduzir_Click);
             // 
             // btnDesabduzir
             // 
@@ -149,6 +159,7 @@
             this.btnDesabduzir.TabIndex = 6;
             this.btnDesabduzir.Text = "Desabduzir";
             this.btnDesabduzir.UseVisualStyleBackColor = true;
+            this.btnDesabduzir.Click += new System.EventHandler(this.btnDesabduzir_Click);
             // 
             // btnRetornarOrigem
             // 
@@ -159,15 +170,7 @@
             this.btnRetornarOrigem.TabIndex = 7;
             this.btnRetornarOrigem.Text = "Retornar a Origem";
             this.btnRetornarOrigem.UseVisualStyleBackColor = true;
-            // 
-            // lblPlaneta
-            // 
-            this.lblPlaneta.AutoSize = true;
-            this.lblPlaneta.Location = new System.Drawing.Point(11, 157);
-            this.lblPlaneta.Name = "lblPlaneta";
-            this.lblPlaneta.Size = new System.Drawing.Size(71, 21);
-            this.lblPlaneta.TabIndex = 3;
-            this.lblPlaneta.Text = "Planeta:";
+            this.btnRetornarOrigem.Click += new System.EventHandler(this.btnRetornarOrigem_Click);
             // 
             // cmbPlanetas
             // 
@@ -188,6 +191,7 @@
             this.btnMudar.TabIndex = 9;
             this.btnMudar.Text = "Mudar";
             this.btnMudar.UseVisualStyleBackColor = true;
+            this.btnMudar.Click += new System.EventHandler(this.btnMudar_Click);
             // 
             // Painel
             // 
@@ -207,7 +211,6 @@
             this.Name = "Painel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Painel";
-            this.Load += new System.EventHandler(this.Painel_Load);
             this.grbDados.ResumeLayout(false);
             this.grbDados.PerformLayout();
             this.ResumeLayout(false);

@@ -30,38 +30,78 @@ namespace OVNIidentificador
             lblTripulantes.Text = "Tripulantes: " + ovni.QtdTripulantes;
             lblSituacao.Text = "Situação: " + (ovni.Situacao ? "Ligado" : "Desligado");
             lblPlaneta.Text = "Planeta: " + ovni.PlanetaAtual;
-        }
-
-        private void lblTripulantes_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Painel_Load(object sender, EventArgs e)
-        {
-
+            // Ativar os botões de acordo com o estado da nave:
+            btnLigar.Enabled = !ovni.Situacao;
+            btnDesligar.Enabled = ovni.Situacao;
+            // Habilitar/desabilitar botões de acordo com a situação:
+            btnAbduzir.Enabled = false;
+            btnDesabduzir.Enabled = false;
+            btnRetornarOrigem.Enabled = false;
+            cmbPlanetas.Enabled = false;
+            btnMudar.Enabled = false;
         }
 
         private void btnAddTripulante_Click(object sender, EventArgs e)
         {
-
+            if(ovni.AdicionarTripulante() == false)
+            {
+                MessageBox.Show("Limite máximo de tripulantes atingido!");
+            }
+            AtualizarDados();
         }
 
         private void btnLigar_Click(object sender, EventArgs e)
         {
-            if (ovni.Ligar() == false)
-            {
-                MessageBox.Show("A nave já está ligada");
-            }
+            ovni.Ligar();
             AtualizarDados();
         }
 
         private void btnDesligar_Click(object sender, EventArgs e)
         {
-            if (ovni.Desligar() == false)
+            ovni.Desligar();
+            AtualizarDados();
+        }
+
+        private void btnRemoverTripulante_Click(object sender, EventArgs e)
+        {
+            if(ovni.RemoverTripulante() == false)
             {
-                MessageBox.Show("A nave já está desligada");
+                MessageBox.Show("É necessário pelo menos 1 tripulante na nave");
             }
+            AtualizarDados();
+        }
+
+        private void btnAbduzir_Click(object sender, EventArgs e)
+        {
+            if (ovni.Abduzir() == false)
+            {
+                MessageBox.Show("Limite máximo de abduzidos atingido!");
+            }
+            AtualizarDados();
+        }
+
+        private void btnDesabduzir_Click(object sender, EventArgs e)
+        {
+            if (ovni.Desabduzir() == false)
+            {
+                MessageBox.Show("Ninguém foi abduzido ainda!");
+            }
+            AtualizarDados();
+        }
+
+        private void btnRetornarOrigem_Click(object sender, EventArgs e)
+        {
+            if (ovni.RetornarAoPlanetaDeOrigem() == false)
+            {
+                MessageBox.Show("A nave já está no planeta de origem");
+            }
+            AtualizarDados();
+        }
+
+        private void btnMudar_Click(object sender, EventArgs e)
+        {
+            string novoPlaneta = cmbPlanetas.Text;
+            ovni.MudarPlaneta(novoPlaneta);
             AtualizarDados();
         }
     }
